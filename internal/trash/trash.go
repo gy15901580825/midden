@@ -1,5 +1,5 @@
 // Package trash implements a restorable trash: Put moves paths into a
-// timestamped entry dir with a manifest; nothing in aism hard-deletes
+// timestamped entry dir with a manifest; nothing in midden hard-deletes
 // user data except Empty().
 package trash
 
@@ -36,7 +36,7 @@ type Trash struct {
 func New(root string) *Trash { return &Trash{Root: root, Now: time.Now} }
 
 func DefaultRoot() (string, error) {
-	if v := os.Getenv("AISM_TRASH_ROOT"); v != "" {
+	if v := os.Getenv("MIDDEN_TRASH_ROOT"); v != "" {
 		return v, nil
 	}
 	base := os.Getenv("XDG_DATA_HOME")
@@ -47,7 +47,7 @@ func DefaultRoot() (string, error) {
 		}
 		base = filepath.Join(home, ".local", "share")
 	}
-	return filepath.Join(base, "aism", "trash"), nil
+	return filepath.Join(base, "midden", "trash"), nil
 }
 
 func (t *Trash) Put(tool, label string, paths []string) (*Entry, error) {

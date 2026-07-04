@@ -1,5 +1,5 @@
 version: 2
-project_name: aism
+project_name: midden
 builds:
   - main: .
     env: [CGO_ENABLED=0]
@@ -7,7 +7,7 @@ builds:
     goarch: [amd64, arm64]
     ldflags:
       - -s -w
-      - -X aism/internal/cli.version={{.Version}}
+      - -X midden/internal/cli.version={{.Version}}
 archives:
   - formats: [tar.gz]
     format_overrides:

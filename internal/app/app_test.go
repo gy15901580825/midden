@@ -7,10 +7,10 @@ import (
 	"testing"
 	"time"
 
-	"aism/internal/adapter/claude"
-	"aism/internal/app"
-	"aism/internal/testfix"
-	"aism/internal/trash"
+	"midden/internal/adapter/claude"
+	"midden/internal/app"
+	"midden/internal/testfix"
+	"midden/internal/trash"
 )
 
 const (

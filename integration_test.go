@@ -8,13 +8,13 @@ import (
 	"strings"
 	"testing"
 
-	"aism/internal/testfix"
+	"midden/internal/testfix"
 )
 
 const sid = "11111111-1111-4111-8111-111111111111"
 
 func TestEndToEnd(t *testing.T) {
-	bin := filepath.Join(t.TempDir(), "aism")
+	bin := filepath.Join(t.TempDir(), "midden")
 	if out, err := exec.Command("go", "build", "-o", bin, ".").CombinedOutput(); err != nil {
 		t.Fatalf("build: %v\n%s", err, out)
 	}
@@ -26,7 +26,7 @@ func TestEndToEnd(t *testing.T) {
 		testfix.UserLine("integration hello", "/home/u/demo"),
 		testfix.AssistantLine("world"))
 
-	env := append(os.Environ(), "AISM_CLAUDE_ROOT="+croot, "AISM_TRASH_ROOT="+troot)
+	env := append(os.Environ(), "MIDDEN_CLAUDE_ROOT="+croot, "MIDDEN_TRASH_ROOT="+troot)
 	run := func(args ...string) string {
 		t.Helper()
 		cmd := exec.Command(bin, args...)

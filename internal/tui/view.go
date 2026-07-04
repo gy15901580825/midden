@@ -7,7 +7,7 @@ import (
 
 	"github.com/charmbracelet/lipgloss"
 
-	"aism/internal/format"
+	"midden/internal/format"
 )
 
 var (

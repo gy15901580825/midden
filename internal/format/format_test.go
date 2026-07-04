@@ -4,7 +4,7 @@ import (
 	"testing"
 	"time"
 
-	"aism/internal/format"
+	"midden/internal/format"
 )
 
 func TestSize(t *testing.T) {

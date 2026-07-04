@@ -15,7 +15,7 @@ import (
 	"strings"
 	"time"
 
-	"aism/internal/adapter"
+	"midden/internal/adapter"
 )
 
 const ActiveWindow = 10 * time.Minute
@@ -30,7 +30,7 @@ type Adapter struct {
 func New(root string) *Adapter { return &Adapter{Root: root, Now: time.Now} }
 
 func DefaultRoot() (string, error) {
-	if v := os.Getenv("AISM_CLAUDE_ROOT"); v != "" {
+	if v := os.Getenv("MIDDEN_CLAUDE_ROOT"); v != "" {
 		return v, nil
 	}
 	home, err := os.UserHomeDir()

@@ -8,10 +8,10 @@ import (
 	"path/filepath"
 	"time"
 
-	"aism/internal/adapter"
-	"aism/internal/adapter/claude"
-	"aism/internal/format"
-	"aism/internal/trash"
+	"midden/internal/adapter"
+	"midden/internal/adapter/claude"
+	"midden/internal/format"
+	"midden/internal/trash"
 )
 
 type Plan struct {

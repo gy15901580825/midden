@@ -1,7 +1,8 @@
 .superpowers/
-aism
-/aism
+midden
+/midden
 /dist/
 
 # internal planning docs — kept local, not published
 docs/superpowers/
+/aism

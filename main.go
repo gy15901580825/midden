@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"aism/internal/cli"
+	"midden/internal/cli"
 )
 
 func main() {

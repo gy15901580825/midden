@@ -9,8 +9,8 @@ import (
 	"testing"
 	"time"
 
-	"aism/internal/adapter/claude"
-	"aism/internal/testfix"
+	"midden/internal/adapter/claude"
+	"midden/internal/testfix"
 )
 
 const (

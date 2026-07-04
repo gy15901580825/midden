@@ -8,10 +8,10 @@ import (
 
 	tea "github.com/charmbracelet/bubbletea"
 
-	"aism/internal/adapter"
-	"aism/internal/adapter/claude"
-	"aism/internal/app"
-	"aism/internal/format"
+	"midden/internal/adapter"
+	"midden/internal/adapter/claude"
+	"midden/internal/app"
+	"midden/internal/format"
 )
 
 type Svc interface {
@@ -148,7 +148,7 @@ func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		return m, nil
 	case executedMsg:
 		if msg.EntryID != "" {
-			m.status = fmt.Sprintf("moved %d item(s) (%s) to trash — 'aism trash restore %s' to undo",
+			m.status = fmt.Sprintf("moved %d item(s) (%s) to trash — 'midden trash restore %s' to undo",
 				msg.Count, format.Size(msg.SizeBytes), msg.EntryID)
 		}
 		m.selected = map[string]bool{}

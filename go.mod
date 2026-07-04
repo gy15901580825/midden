@@ -1,4 +1,4 @@
-module aism
+module midden
 
 go 1.24.0
 

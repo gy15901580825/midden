@@ -8,8 +8,8 @@ import (
 	"testing"
 	"time"
 
-	"aism/internal/cli"
-	"aism/internal/testfix"
+	"midden/internal/cli"
+	"midden/internal/testfix"
 )
 
 const (
@@ -20,8 +20,8 @@ const (
 // run executes the CLI with a fixture root and returns stdout.
 func run(t *testing.T, root string, stdin string, args ...string) (string, error) {
 	t.Helper()
-	t.Setenv("AISM_CLAUDE_ROOT", root)
-	t.Setenv("AISM_TRASH_ROOT", filepath.Join(t.TempDir(), "trash"))
+	t.Setenv("MIDDEN_CLAUDE_ROOT", root)
+	t.Setenv("MIDDEN_TRASH_ROOT", filepath.Join(t.TempDir(), "trash"))
 	cmd := cli.New()
 	var out bytes.Buffer
 	cmd.SetOut(&out)
@@ -225,11 +225,11 @@ func TestClearNoFlagsClearsAllWithConfirm(t *testing.T) {
 func TestTrashRoundTrip(t *testing.T) {
 	root := fixtureRoot(t)
 	trashRoot := filepath.Join(t.TempDir(), "trash")
-	t.Setenv("AISM_TRASH_ROOT", trashRoot) // shared across runs below
+	t.Setenv("MIDDEN_TRASH_ROOT", trashRoot) // shared across runs below
 
 	runShared := func(stdin string, args ...string) (string, error) {
 		t.Helper()
-		t.Setenv("AISM_CLAUDE_ROOT", root)
+		t.Setenv("MIDDEN_CLAUDE_ROOT", root)
 		cmd := cli.New()
 		var out bytes.Buffer
 		cmd.SetOut(&out)
@@ -267,11 +267,11 @@ func TestTrashRoundTrip(t *testing.T) {
 func TestTrashDryRun(t *testing.T) {
 	root := fixtureRoot(t)
 	trashRoot := filepath.Join(t.TempDir(), "trash")
-	t.Setenv("AISM_TRASH_ROOT", trashRoot) // shared across runs below
+	t.Setenv("MIDDEN_TRASH_ROOT", trashRoot) // shared across runs below
 
 	runShared := func(stdin string, args ...string) (string, error) {
 		t.Helper()
-		t.Setenv("AISM_CLAUDE_ROOT", root)
+		t.Setenv("MIDDEN_CLAUDE_ROOT", root)
 		cmd := cli.New()
 		var out bytes.Buffer
 		cmd.SetOut(&out)

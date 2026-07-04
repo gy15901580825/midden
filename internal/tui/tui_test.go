@@ -7,10 +7,10 @@ import (
 
 	tea "github.com/charmbracelet/bubbletea"
 
-	"aism/internal/adapter"
-	"aism/internal/adapter/claude"
-	"aism/internal/app"
-	"aism/internal/tui"
+	"midden/internal/adapter"
+	"midden/internal/adapter/claude"
+	"midden/internal/app"
+	"midden/internal/tui"
 )
 
 type fakeSvc struct {

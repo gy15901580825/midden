@@ -16,15 +16,15 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"aism/internal/adapter/claude"
-	"aism/internal/app"
-	"aism/internal/format"
-	"aism/internal/trash"
-	"aism/internal/tui"
+	"midden/internal/adapter/claude"
+	"midden/internal/app"
+	"midden/internal/format"
+	"midden/internal/trash"
+	"midden/internal/tui"
 )
 
 // version is overridden at release time via
-// -ldflags "-X aism/internal/cli.version=<tag>" (see .goreleaser.yaml).
+// -ldflags "-X midden/internal/cli.version=<tag>" (see .goreleaser.yaml).
 var version = "dev"
 
 type flags struct {
@@ -35,7 +35,7 @@ type flags struct {
 func New() *cobra.Command {
 	fl := &flags{}
 	root := &cobra.Command{
-		Use:           "aism",
+		Use:           "midden",
 		Short:         "Manage AI coding sessions (Claude Code) — browse, rename, clear, remove",
 		Version:       version,
 		SilenceUsage:  true,
@@ -96,9 +96,9 @@ func resolveProject(a *app.App, arg string) (string, error) {
 	case 1:
 		return byName[0], nil
 	case 0:
-		return "", fmt.Errorf("no project named %q (try 'aism projects') (project ids start with '-': pass them after --, e.g. aism sessions -- <id>)", arg)
+		return "", fmt.Errorf("no project named %q (try 'midden projects') (project ids start with '-': pass them after --, e.g. midden sessions -- <id>)", arg)
 	default:
-		return "", fmt.Errorf("%q is ambiguous, use a full id (pass it after -- so it isn't parsed as flags): aism sessions -- <id>. Matches: %s", arg, strings.Join(byName, ", "))
+		return "", fmt.Errorf("%q is ambiguous, use a full id (pass it after -- so it isn't parsed as flags): midden sessions -- <id>. Matches: %s", arg, strings.Join(byName, ", "))
 	}
 }
 
@@ -214,7 +214,7 @@ func confirmPlan(cmd *cobra.Command, fl *flags, p *app.Plan) (bool, error) {
 }
 
 func reportResult(cmd *cobra.Command, res *app.Result) {
-	fmt.Fprintf(cmd.OutOrStdout(), "moved %d item(s) (%s) to trash entry %s — restore with: aism trash restore %s\n",
+	fmt.Fprintf(cmd.OutOrStdout(), "moved %d item(s) (%s) to trash entry %s — restore with: midden trash restore %s\n",
 		res.Count, format.Size(res.SizeBytes), res.EntryID, res.EntryID)
 }
 
@@ -298,7 +298,7 @@ func removeCmd(fl *flags) *cobra.Command {
 					}
 				}
 			default:
-				return fmt.Errorf("give session ids or --project (see 'aism sessions')")
+				return fmt.Errorf("give session ids or --project (see 'midden sessions')")
 			}
 			ok, err := confirmPlan(cmd, fl, plan)
 			if err != nil || !ok {
@@ -378,7 +378,7 @@ func clearCmd(fl *flags) *cobra.Command {
 }
 
 func trashCmd(fl *flags) *cobra.Command {
-	c := &cobra.Command{Use: "trash", Short: "List, restore, or empty the aism trash"}
+	c := &cobra.Command{Use: "trash", Short: "List, restore, or empty the midden trash"}
 	c.AddCommand(
 		&cobra.Command{
 			Use: "list", Short: "List trash entries",

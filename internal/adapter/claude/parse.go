@@ -1,10 +1,10 @@
 package claude
 
 import (
-	"aism/internal/adapter"
 	"bufio"
 	"encoding/json"
 	"io"
+	"midden/internal/adapter"
 	"os"
 	"strings"
 )

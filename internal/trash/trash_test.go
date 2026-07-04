@@ -8,7 +8,7 @@ import (
 	"testing"
 	"time"
 
-	"aism/internal/trash"
+	"midden/internal/trash"
 )
 
 var fixedNow = time.Date(2026, 7, 3, 12, 0, 0, 0, time.UTC)
@@ -137,7 +137,7 @@ func TestPutReservedManifestName(t *testing.T) {
 
 func TestDefaultRoot(t *testing.T) {
 	t.Run("explicit root wins", func(t *testing.T) {
-		t.Setenv("AISM_TRASH_ROOT", "/custom/root")
+		t.Setenv("MIDDEN_TRASH_ROOT", "/custom/root")
 		got, err := trash.DefaultRoot()
 		if err != nil {
 			t.Fatal(err)
@@ -148,20 +148,20 @@ func TestDefaultRoot(t *testing.T) {
 	})
 
 	t.Run("falls back to XDG_DATA_HOME", func(t *testing.T) {
-		t.Setenv("AISM_TRASH_ROOT", "")
+		t.Setenv("MIDDEN_TRASH_ROOT", "")
 		t.Setenv("XDG_DATA_HOME", "/x")
 		got, err := trash.DefaultRoot()
 		if err != nil {
 			t.Fatal(err)
 		}
-		want := filepath.Join("/x", "aism", "trash")
+		want := filepath.Join("/x", "midden", "trash")
 		if got != want {
 			t.Fatalf("got %q, want %q", got, want)
 		}
 	})
 
-	t.Run("AISM_TRASH_ROOT wins over XDG_DATA_HOME", func(t *testing.T) {
-		t.Setenv("AISM_TRASH_ROOT", "/custom")
+	t.Run("MIDDEN_TRASH_ROOT wins over XDG_DATA_HOME", func(t *testing.T) {
+		t.Setenv("MIDDEN_TRASH_ROOT", "/custom")
 		t.Setenv("XDG_DATA_HOME", "/xdg")
 		got, err := trash.DefaultRoot()
 		if err != nil {
@@ -173,14 +173,14 @@ func TestDefaultRoot(t *testing.T) {
 	})
 
 	t.Run("uses .local/share when both env vars empty", func(t *testing.T) {
-		t.Setenv("AISM_TRASH_ROOT", "")
+		t.Setenv("MIDDEN_TRASH_ROOT", "")
 		t.Setenv("XDG_DATA_HOME", "")
 		got, err := trash.DefaultRoot()
 		if err != nil {
 			t.Fatal(err)
 		}
 		home, _ := os.UserHomeDir()
-		want := filepath.Join(home, ".local", "share", "aism", "trash")
+		want := filepath.Join(home, ".local", "share", "midden", "trash")
 		if got != want {
 			t.Fatalf("got %q, want %q", got, want)
 		}
