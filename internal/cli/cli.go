@@ -23,7 +23,9 @@ import (
 	"aism/internal/tui"
 )
 
-const version = "0.1.0-dev"
+// version is overridden at release time via
+// -ldflags "-X aism/internal/cli.version=<tag>" (see .goreleaser.yaml).
+var version = "dev"
 
 type flags struct {
 	dryRun, yes, jsonOut bool

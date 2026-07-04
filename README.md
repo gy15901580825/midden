@@ -18,19 +18,26 @@ touch.
 
 ## Install
 
+### Prebuilt binary (Linux / macOS / Windows)
+
+Download the archive for your platform from the
+[Releases](https://github.com/gy15901580825/aism/releases) page, unpack it,
+and put the `aism` binary on your `PATH`.
+
+The binaries are unsigned, so the first launch may be blocked:
+
+- **macOS** — Gatekeeper says the developer can't be verified. Clear the
+  quarantine flag once: `xattr -d com.apple.quarantine ./aism`
+- **Windows** — SmartScreen shows a warning; choose *More info → Run anyway*.
+
+### From source
+
 Prerequisite: Go 1.22 or later (the build fetches the exact toolchain it
 needs automatically).
 
-The module isn't published yet, so `go install` isn't available. Build from
-source instead:
-
-    git clone https://github.com/<you>/aism.git
+    git clone https://github.com/gy15901580825/aism.git
     cd aism
     go build -o aism .
-
-Once released, prebuilt binaries for Linux, macOS and Windows will be
-attached to each GitHub release (see `.goreleaser.yaml`), and `go install`
-will work once the module path is finalized.
 
 ## Usage
 
