@@ -24,7 +24,7 @@ touch.
 ### Prebuilt binary (Linux / macOS / Windows)
 
 Download the archive for your platform from the
-[Releases](https://github.com/gy15901580825/aism/releases) page, unpack it,
+[Releases](https://github.com/gy15901580825/midden/releases) page, unpack it,
 and put the `midden` binary on your `PATH`.
 
 The binaries are unsigned, so the first launch may be blocked:
@@ -38,7 +38,7 @@ The binaries are unsigned, so the first launch may be blocked:
 Prerequisite: Go 1.22 or later (the build fetches the exact toolchain it
 needs automatically).
 
-    git clone https://github.com/gy15901580825/aism.git midden
+    git clone https://github.com/gy15901580825/midden.git
     cd midden
     go build -o midden .
 
